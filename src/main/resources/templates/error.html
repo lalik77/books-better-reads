@@ -23,24 +23,17 @@
   <div class="px-4 py-5 my-5 text-center">
     <img class="d-block mx-auto mb-4" th:src="${logo}" alt="" width="120" height="120">
     <h1 class="display-5 fw-bold">Better Reads</h1>
+    <h1 class="display-5 ">Submission Error!</h1>
+    <h1 class="display-5 fw-bold">Probably you are trying to track a book,</h1>
+    <h1 class="display-5 fw-bold">with an incorrect date!</h1>
     <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4 space-bottom">Please Login to continue! Control your reading habit. Track the books you read and fuel your reading!</p>
+      <br>
+
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <a type="button" class="btn btn-primary btn-lg px-4 gap-3" href="/oauth2/authorization/github">Login Via Github</a>
+        <a type="button" class="btn btn-primary btn-lg px-4 gap-3" href="/">Back To Main Page</a>
       </div>
     </div>
   </div>
-
-  <div class="px-4 py-5 my-5 text-center">
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Or search for a book</p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <div th:insert="components/book-search :: search-panel"></div>
-      </div>
-    </div>
-  </div>
-
-
 
 
 </main>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Details</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+        crossorigin="anonymous">
+
+</head>
+<body>
+
+
+<div class="container">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding-bottom: 12px">
+     <div class="container-fluid">
+    <a class="navbar-brand" href="/">Book Better Reads</a>
+     </div>
+  </nav>
+
+  <div th:insert="components/book-search.html :: search-panel"></div>
+
+  <section class="content">
+    <!--/*@thymesVar id="searchResult" type="com.mami.betterreads.search.SearchResult"*/-->
+  <!--  <h5 class="card-text display-5 " th:text="${searchResult.size()}">Num Found</h5>-->
+    <div class="card-group">
+      <div class="card" style="flex:0 0 18%; margin: 20px "  th:each="result: ${searchResult}">
+
+          <img th:src="${result.cover_i}" class="card-img-top" >
+          <div class="card-body">
+            <h5 class="card-title" th:text="${result.title}">Card title</h5>
+            <div th:each="author: ${result.author_name}" >
+             <p class="card-text" th:text="${author}">Authors</p>
+              <br>
+            </div>
+          </div>
+        <div class="card" style="padding-bottom: 5px">
+          <a  th:href="@{'/books/' + ${result.key}}" class="btn btn-primary" >View Book</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+</body>
+</html>
