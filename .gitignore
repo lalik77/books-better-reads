@@ -14,9 +14,6 @@ out/
 # Compiled class file
 *.class
 
-###Secure Bundle###
-src/main/resources/secure-connect.zip
-
 # Log file
 *.log
 
