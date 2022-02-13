@@ -1,18 +1,17 @@
-# Getting Started
+# Better Reads Books Tracker
 
 ### Reference Documentation
 For further reference, please consider the following sections:
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.5.8/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.5.8/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.6.2/reference/htmlsingle/#boot-features-developing-web-applications)
-* [Spring Security](https://docs.spring.io/spring-boot/docs/2.6.2/reference/htmlsingle/#boot-features-security)
+* [Youtube Playlist of the tutorial by JavaBrains](https://www.youtube.com/playlist?list=PL-17wWUhlUbs0UnTLYd1VsrQdsqdsyzWV)
+* [Create an account for Cassandra](https://www.datastax.com/)
+* [Spring Data for Apache Cassandra](https://docs.spring.io/spring-boot/docs/2.6.2/reference/htmlsingle/#boot-features-cassandra)
+
 
 ### Guides
-The following guides illustrate how to use some features concretely:
+The following [link](https://books-better-reads.herokuapp.com/) illustrate the app deployed on a server
 
- ### Saved  Authors from partial DATA DUMP
+ ### You can Test with those saved books and authors from partial DATA DUMP
   
  Colombe Plante .
  Cabanes/ .

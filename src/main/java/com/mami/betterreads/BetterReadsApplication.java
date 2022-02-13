@@ -1,35 +1,36 @@
 package com.mami.betterreads;
 
-import com.mami.betterreads.connection.DataStaxAstraConfig;
+import com.mami.betterreads.connection.SecurityBundleConfig;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Path;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.cassandra.CqlSessionBuilderCustomizer;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.FileCopyUtils;
 
 @SpringBootApplication
-@EnableConfigurationProperties(DataStaxAstraConfig.class)
 public class BetterReadsApplication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
 		SpringApplication.run(BetterReadsApplication.class, args);
 	}
 
-	/*@RequestMapping("/user")
-	public String user(@AuthenticationPrincipal OAuth2User principal){
-		System.out.println(principal);
-		return principal.getAttribute("name");
-	}*/
-
 	@Bean
-	public CqlSessionBuilderCustomizer sessionBuilderCustomizer(DataStaxAstraConfig config) {
-		Path bundle = config.getSecureConnectBundle().toPath();
-		return builder->builder.withCloudSecureConnectBundle(bundle);
-	}
+	public CqlSessionBuilderCustomizer sessionBuilderCustomizer(
+			SecurityBundleConfig securityBundleConfig)
+			throws IOException {
 
+		File file = File.createTempFile("test", ".txt");
+		final InputStream inputStream = securityBundleConfig.loadFileWithClassPathResource()
+				.getInputStream();
+		OutputStream outputStream = new FileOutputStream(file);
+		FileCopyUtils.copy(inputStream, outputStream);
+		final Path path = file.toPath();
+		return builder -> builder.withCloudSecureConnectBundle(path);
+	}
 }
